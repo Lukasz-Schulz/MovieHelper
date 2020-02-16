@@ -1,13 +1,17 @@
 $(function(){
-    $("#name").keyup(function(){
-        $("#greet").text("Hello " + $("#name").val());
-        openInNewTab();
-    })
-})
-let title = "jojo rabbit"
-let url = `http://www.google.com/search?q=rotten tomatoes ${title}&btnI`
+    $("#add").click(function(){
+            let list = localStorage.getItem('pages');
+            alert(list);
+            let newList = [];
+            if(list) {
+                newList.push(list);
+            }
 
-function openInNewTab() {
-    var win = window.open(url);
-    win.focus();
-  }
+            let newPage = $("#name").val();
+            alert(newPage);
+            if(newPage){                
+                newList.push(newPage);
+            }
+            localStorage.setItem('pages', JSON.stringify(newList));
+        })
+    });
